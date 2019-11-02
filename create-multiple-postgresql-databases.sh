@@ -21,6 +21,7 @@ function improve_postgres_performance() {
 	sed -ri "s/^#*(random_page_cost\s*=\s*)\S+/\1 2.0/" "$PGDATA"/postgresql.conf
 	sed -ri "s/^#*(checkpoint_segments\s*=\s*)\S+/\1 64/" "$PGDATA"/postgresql.conf
 	sed -ri "s/^#*(checkpoint_completion_target\s*=\s*)\S+/\1 0.9/" "$PGDATA"/postgresql.conf
+        sed -ri "s/^#*(work_mem\s*=\s*)\S+/\1 64MB/" "$PGDATA"/postgresql.conf
 
 	grep fsync "$PGDATA"/postgresql.conf
 }
